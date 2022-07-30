@@ -42,7 +42,7 @@ class Stack{
     int pop() {
         //cout<<"The popped element is "<< arr[top] <<endl;
         int a = arr[top];
-        top--;   // top = top-1
+        top--;
         return a;
     }
 
@@ -57,7 +57,8 @@ class Stack{
     int TopElement(){
         int val= pop();
         push(val);
-        cout<<"Top element of Stack is:\t :"<<val<<endl;
+        return val;
+
 
     }
 };
@@ -122,7 +123,8 @@ int main() {
                 break;
             }
             case 6:{
-                st.TopElement();
+                cout<<"Top element of Stack is:\t "<<st.TopElement()<<endl;
+            
                 break;
             }
             case 7:{
