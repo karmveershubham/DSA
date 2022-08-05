@@ -1,73 +1,80 @@
 #include <iostream>
+#include <conio.h>
 using namespace std;
 
-//creating class;
-class Stack{
-
+//creating class
+class Stack
+{
     private:
         int n, *arr, top;
     public:
-        Stack(){
-            int size;
-            cout<<"Enter the size of Stack: ";
-            cin>>size;
-            n=size-1;
+        Stack(int size)
+        {
+            n=size;
             arr=new int[n];
             top=-1;
         }
-    
-    bool isEmpty(){
-        if(top<=-1){
-            return true;
+
+        bool isEmpty()
+        {
+            if(top<=-1){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
-        else{
-            return false;
-        }
-    }
-    
-    bool isFull(){
-        if(top>n-1){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-        //push function
-    int push(int val) {
-        arr[++top]=val;
-    }
         
+        bool isFull()
+        {
+            if(top>=n-1){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+            //push function
+        int push(int val) 
+        {
+            arr[++top]=val;
+        }
+            
             //pop function
-    int pop() {
-        //cout<<"The popped element is "<< arr[top] <<endl;
-        int a = arr[top];
-        top--;
-        return a;
-    }
+        int pop()
+        {
+            int a = arr[top];
+            top--;
+            return a;
+        }
 
-        //display function
-    void display() {
-        cout<<"Stack elements are:\t";
-        for(int i=top; i>=0; i--)
-            cout<<arr[i]<<" ";
-            cout<<endl;
-    }
-        
-    int TopElement(){
-        int val= pop();
-        push(val);
-        return val;
-
-
-    }
+            //display function
+        void display()
+        {
+            cout<<"Stack elements are:\t";
+            for(int i=top; i>=0; i--)
+                cout<<arr[i]<<" ";
+                cout<<endl;
+        }
+            
+        int TopElement()
+        {
+            int val= pop();
+            push(val);
+            return val;
+        }
 };
 
-int main() {
-    //creatig object for class
-    Stack st;
+int main() 
+{
+    int size;
+    cout<<"Enter the size of Stack: ";
+    cin>>size;
+        //creatig object for class
+    Stack st(size);
     int ch, val;
-    cout<<"1) Push in stack"<<endl;
+
+    cout<<"\n1) Push in stack"<<endl;
     cout<<"2) Pop from stack"<<endl;
     cout<<"3) Display stack"<<endl;
     cout<<"4) Check Empty stack"<<endl;
@@ -76,66 +83,83 @@ int main() {
     cout<<"7) EXIT"<<endl;
 
     bool t=true;
-    while(t){
+
+    while(t)
+    {
         cout<<"\nEnter choice: "<<endl;
         cin>>ch;
-        //calling function according to choices.
+            //calling function according to choices.
         switch(ch) {
             case 1: {
-                if(st.isFull()){
+                if(st.isFull())
+                {
                     cout<<"stack overflow."<<endl;
                 }
-                else{
+                else
+                {
                     cout<<"Enter value to be pushed:"<<endl;
                     cin>>val;
                     st.push(val);
                 }
                 break;
             }
-            case 2: {
-                if(st.isEmpty()){
+            case 2: 
+            {
+                if(st.isEmpty())
+                {
                     cout<<"stack underflow";
                 }
-                else{
+                else
+                {
                     cout<<"The popped elemnt is: "<< st.pop() <<endl;
                 }
                 break;
             }
-            case 3: {
+            case 3:
+            {
                 st.display();
                 break;
             }
             case 4:{
-                if(st.isEmpty()){
+                if(st.isEmpty())
+                {
                     cout<<"Stack is Empty"<<endl;
                 }
-                else{
+                else
+                {
                     cout<<"stack is Not Empty"<<endl;
                 }
                 break;
             }
-            case 5:{
-                if(st.isFull()){
+            case 5:
+            {
+                if(st.isFull())
+                {
                 cout<<"Stack is full"<<endl;
-                }else{
+                }
+                else
+                {
                 cout<<"Stack is Not Full"<<endl;
                 }
                 break;
             }
-            case 6:{
+            case 6:
+            {
                 cout<<"Top element of Stack is:\t "<<st.TopElement()<<endl;
-            
                 break;
             }
-            case 7:{
+            case 7:
+            {
                 cout<<"\nThanks. "<<endl;
                 t=false;
                 break;
             }
-            default: {
+            default: 
+            {
                 cout<<"Invalid Choice"<<endl;
             }
         }
     }
-return 0;
+    getch();
+    return 0;
 }
