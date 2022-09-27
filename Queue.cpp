@@ -1,5 +1,6 @@
 // C Program to Implement a Queue using an Array 
 #include <iostream>
+#include<conio.h>
 using namespace std;
 
 class Queue {
@@ -116,6 +117,8 @@ int main()
                 cout<<"Wrong choice \n";
         } //End of switch 
     } //End of while 
+    getch();
+    return 0;
 } //End of main() 
 
 
