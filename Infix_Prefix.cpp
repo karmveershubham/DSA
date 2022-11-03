@@ -15,7 +15,7 @@ int getPriority(char C)
 		return 1;
 	else if (C == '*' || C == '/')
 		return 2;
-	else if (C == '^')
+	else if (C == '$')
 		return 3;
 	return 0;
 }
@@ -57,7 +57,7 @@ string infixToPostfix(string infix)
 		{
 			if (isOperator(stack.TopElement()))
 			{
-				if(infix[i] == '^')
+				if(infix[i] == '$')
 				{
 					while (getPriority(infix[i]) <= getPriority(stack.TopElement()))
 					{
@@ -124,8 +124,9 @@ int main()
 	string s; // = ("(A-B/C)*(A/K+L)");
 	cout<<"Enter the infix string: ";
 	cin>>s;
-	cout<<"Postfix Expression: "<<infixToPostfix(s)<<"\n"<<endl;
-	cout << "Prefix Expression: "<<infixToPrefix(s) << endl;
+	cout <<"Prefix Expression: "<<infixToPrefix(s)<<"\n" << endl;
+	cout<<"Postfix Expression: "<<infixToPostfix(s)<<endl;
+	
     getch();
 	return 0;
 }
