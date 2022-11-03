@@ -1,6 +1,7 @@
 #include<iostream>
 #include<conio.h>
 #include "Stacks.h"
+#include<algorithm>
 using namespace std;
 
 bool isOperator(char c)
@@ -23,7 +24,7 @@ string infixToPostfix(string infix)
 {
 	infix = '(' + infix + ')';
 	int l = infix.size();
-	stack<char> char_stack;
+	Stacks stack(l);
 	string output;
 
 	for (int i = 0; i < l; i++) {
@@ -36,53 +37,53 @@ string infixToPostfix(string infix)
 		// If the scanned character is an
 		// ‘(‘, push it to the stack.
 		else if (infix[i] == '(')
-			char_stack.push('(');
+			stack.push('(');
 
 		// If the scanned character is an
 		// ‘)’, pop and output from the stack
 		// until an ‘(‘ is encountered.
 		else if (infix[i] == ')') {
-			while (char_stack.top() != '(') {
-				output += char_stack.top();
-				char_stack.pop();
+			while (stack.TopElement() != '(') {
+				output += stack.TopElement();
+				stack.pop();
 			}
 
 			// Remove '(' from the stack
-			char_stack.pop();
+			stack.pop();
 		}
 
 		// Operator found
 		else
 		{
-			if (isOperator(char_stack.top()))
+			if (isOperator(stack.TopElement()))
 			{
 				if(infix[i] == '^')
 				{
-					while (getPriority(infix[i]) <= getPriority(char_stack.top()))
+					while (getPriority(infix[i]) <= getPriority(stack.TopElement()))
 					{
-						output += char_stack.top();
-						char_stack.pop();
+						output += stack.TopElement();
+						stack.pop();
 					}
 					
 				}
 				else
 				{
-					while (getPriority(infix[i]) < getPriority(char_stack.top()))
+					while (getPriority(infix[i]) < getPriority(stack.TopElement()))
 					{
-						output += char_stack.top();
-						char_stack.pop();
+						output += stack.TopElement();
+						stack.pop();
 					}
 					
 				}
 
 				// Push current Operator on stack
-				char_stack.push(infix[i]);
+				stack.push(infix[i]);
 			}
 		}
 	}
-	while(!char_stack.empty()){
-		output += char_stack.top();
-		char_stack.pop();
+	while(!stack.isEmpty()){
+		output += stack.TopElement();
+		stack.pop();
 	}
 	return output;
 }
@@ -119,7 +120,10 @@ string infixToPrefix(string infix)
 
 int main()
 {
-	string s = ("(A-B/C)*(A/K+L)");
+	
+	string s; // = ("(A-B/C)*(A/K+L)");
+	cout<<"Enter the infix string: ";
+	cin>>s;
 	cout<<"Postfix Expression: "<<infixToPostfix(s)<<"\n"<<endl;
 	cout << "Prefix Expression: "<<infixToPrefix(s) << endl;
     getch();
