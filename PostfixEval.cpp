@@ -24,6 +24,7 @@ int postfixEval(string term)
 			cout<<"val1 = "<<val1<<endl;
 			int val2 = opStk.pop();
 			cout<<"val2 = "<<val2<<endl;
+			cout<<"term[i]";
 			switch (term[i])
 			{
 			
