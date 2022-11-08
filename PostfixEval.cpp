@@ -14,7 +14,7 @@ int postfixEval(string term)
 	{
 		// If the scanned character is an operand
 		// push it to the stack. else pop values and perform operation.
-		cout<<term[i]<<" ";
+		
 		if (isdigit(term[i]))
 			opStk.push(term[i]-'0');
 
@@ -24,7 +24,7 @@ int postfixEval(string term)
 			cout<<"val1 = "<<val1<<endl;
 			int val2 = opStk.pop();
 			cout<<"val2 = "<<val2<<endl;
-			cout<<"term[i]";
+			cout<<"operator: "<<term[i]<<endl;
 			switch (term[i])
 			{
 			
