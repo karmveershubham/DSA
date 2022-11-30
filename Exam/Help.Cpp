@@ -1,3 +1,5 @@
+// Insert at index in dll
+
 void DLL::delFromPos(int pos)
 {
   int cnt=count();
@@ -32,3 +34,19 @@ void DLL::delFromPos(int pos)
 	   }
 	}
 }
+
+// reverse  SLL by recursion
+void reverse(Node *head, Node*curr, Node*pre){
+	if(curr==Null)
+	{
+		head=prev;
+	 	return;
+	}
+	Node * forward=curr->next;
+	reverse(head,forward,curr);
+	curr->next=prev;
+}
+
+// reverse SLL by recursion
+
+
