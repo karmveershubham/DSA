@@ -164,6 +164,7 @@ void print(){
     if(head == NULL){
         printf("Linked List is Empty.\n");
     }
+    printf("The linked list is: ");
     struct node* temp = head;
     while(temp != NULL){
         printf("%d ", temp->data);
