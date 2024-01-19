@@ -17,22 +17,39 @@ void insert_first(int value){
 }
 
 void sort(struct node *head){   
-    struct node *start, *traverse, *min;
+    // struct node *start, *traverse, *min;
+    // start=head;
+    // while(start->next){
+    //     min=start;
+    //     traverse=start->next;
+    //     while(traverse){
+    //         if(min->data > traverse->data){
+    //             min=traverse;
+    //         }
+    //         traverse=traverse->next;
+    //     }
+    // //swap
+    //     int temp = start->data;
+    //     start->data = min->data;
+    //     min->data = temp;
+
+    //     start=start->next;
+    // }
+
+    struct node *start,*traverse;
     start=head;
-    while(start->next){
-        min=start;
-        traverse=start->next;
+    while(start){
+        
+        traverse=start;
+
         while(traverse){
-            if(min->data > traverse->data){
-                min=traverse;
+            if(start->data>traverse->data){
+                int temp=start->data;
+                start->data=traverse->data;
+                traverse->data=temp;
             }
             traverse=traverse->next;
         }
-    //swap
-        int temp = start->data;
-        start->data = min->data;
-        min->data = temp;
-
         start=start->next;
     }
 }
