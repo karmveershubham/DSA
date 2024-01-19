@@ -1,5 +1,5 @@
 # DSA
-Program on Data Structures and algorithm using CPP.
+Program on Data Structures and algorithm using CPP and C.
 
 Searching Algorithms 
   Linear search
